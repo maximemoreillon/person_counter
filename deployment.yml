@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: object-detection
+  name: person-counter
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: object-detection
+      app: person-counter
   template:
     metadata:
       labels:
-        app: object-detection
+        app: person-counter
     spec:
       containers:
-      - name: object-detection
-        image: 192.168.1.2:5000/object-detection
+      - name: person-counter
+        image: 192.168.1.2:5000/person-counter
         ports:
         - containerPort: 8051
 ---
@@ -22,12 +22,12 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    run: object-detection
-  name: object-detection
+    run: person-counter
+  name: person-counter
 spec:
   ports:
   - port: 8051
     nodePort: 30051
   selector:
-    app: object-detection
+    app: person-counter
   type: LoadBalancer
