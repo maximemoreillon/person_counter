@@ -3,6 +3,8 @@ import tensorflow as tf
 from flask import Flask, request
 import numpy as np
 
+PORT = 8051
+
 # Model download
 MODEL_NAME = 'ssd_mobilenet_v2_coco_2018_03_29'
 LOCAL_FILE_NAME = '{}.tar.gz'.format(MODEL_NAME)
@@ -70,4 +72,4 @@ def predict():
     return {"count": person_count}
 
 print('Starting server')
-app.run(host='0.0.0.0', port=8051)
+app.run(host='0.0.0.0', port=PORT)
