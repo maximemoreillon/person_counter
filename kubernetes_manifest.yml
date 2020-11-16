@@ -15,6 +15,7 @@ spec:
       containers:
       - name: person-counter
         image: moreillon/person-counter
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
 ---
