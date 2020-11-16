@@ -14,4 +14,5 @@ RUN pip3 install -r requirements.txt
 EXPOSE 80
 
 # Run the app
-CMD [ "gunicorn", "server:app", "-b 0.0.0.0:80"]
+#CMD [ "gunicorn", "server:app", "-b 0.0.0.0:80"]
+CMD [ "python3", "server.py"]

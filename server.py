@@ -82,6 +82,7 @@ def predict():
     })
 
 if __name__ == '__main__':
-    PORT = 8051
+    #PORT = 8051
+    PORT=80
     print('Starting server')
     app.run(host='0.0.0.0', port=PORT)
