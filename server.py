@@ -3,7 +3,6 @@ import tensorflow as tf
 from flask import Flask, request
 import numpy as np
 
-PORT = 8051
 
 # Model download
 MODEL_NAME = 'ssd_mobilenet_v2_coco_2018_03_29'
@@ -36,7 +35,7 @@ load_model()
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
+def root():
     return 'Person counter microservice'
 
 
@@ -78,5 +77,7 @@ def predict():
 
     })
 
-print('Starting server')
-app.run(host='0.0.0.0', port=PORT)
+if __name__ == '__main__':
+    PORT = 8051
+    print('Starting server')
+    app.run(host='0.0.0.0', port=PORT)

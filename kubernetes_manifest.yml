@@ -16,7 +16,7 @@ spec:
       - name: person-counter
         image: moreillon/person-counter
         ports:
-        - containerPort: 8051
+        - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
@@ -27,7 +27,6 @@ metadata:
 spec:
   ports:
   - port: 80
-    targetPort: 8051
   selector:
     app: person-counter
   type: LoadBalancer
