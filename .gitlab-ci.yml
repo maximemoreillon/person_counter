@@ -1,6 +1,6 @@
 stages:
   - containerization
-  #- deployment
+  - deployment
 
 variables:
   APPLICATION_NAME: person-counter
@@ -19,14 +19,14 @@ containerization:
     # Cleanup
     - docker image rm ${DOCKER_IMAGE}
 
-#deployment:
-#  stage: deployment
-#  tags:
-#    - moreillon
-#  script:
-#    - envsubst < kubernetes_manifest.yml | kubectl apply -f -
-#    - kubectl rollout restart deployment/${APPLICATION_NAME}
-#  environment:
-#    name: production
-#    kubernetes:
-#      namespace: ${KUBERNETES_NAMESPACE}
+deployment:
+  stage: deployment
+  tags:
+    - moreillon
+  script:
+    - envsubst < kubernetes_manifest.yml | kubectl apply -f -
+    - kubectl rollout restart deployment/${APPLICATION_NAME}
+  environment:
+    name: production
+    kubernetes:
+      namespace: ${KUBERNETES_NAMESPACE}
