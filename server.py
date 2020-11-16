@@ -11,32 +11,27 @@ MODELS_DIRECTORY = '{}/models/'.format(os.getcwd())
 MODEL_URL = 'http://download.tensorflow.org/models/object_detection/{}.tar.gz'.format(MODEL_NAME)
 MODEL_PATH = '{}/models/{}/saved_model'.format(os.getcwd(), MODEL_NAME)
 
-def download_model():
-    print('Downloading model ...')
-    model_dir = tf.keras.utils.get_file(
-        fname=LOCAL_FILE_NAME,
-        origin=MODEL_URL,
-        cache_subdir=MODELS_DIRECTORY,
-        archive_format='tar',
-        extract=True)
-    print('Downloading model OK')
+print('Downloading model ...')
+model_dir = tf.keras.utils.get_file(
+    fname=LOCAL_FILE_NAME,
+    origin=MODEL_URL,
+    cache_subdir=MODELS_DIRECTORY,
+    archive_format='tar',
+    extract=True)
+print('Downloading model OK')
 
-def load_model():
-    # Model loading
-    print('Loading model ...')
-    model = tf.compat.v2.saved_model.load(MODEL_PATH, None)
-    model = model.signatures['serving_default']
-    print('Loading model OK')
+# Model loading
+print('Loading model ...')
+model = tf.compat.v2.saved_model.load(MODEL_PATH, None)
+model = model.signatures['serving_default']
+print('Loading model OK')
 
-
-download_model()
-load_model()
 
 app = Flask(__name__)
 
 @app.route('/')
 def root():
-    return sonify( {
+    return jsonify( {
     'applicationname': 'Person counter',
     'author': 'Maxime MOREILLON',
     'version': '1.0.1',
