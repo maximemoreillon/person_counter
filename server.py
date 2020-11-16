@@ -36,7 +36,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def root():
-    return 'Person counter microservice'
+    return sonify( {
+    'applicationname': 'Person counter',
+    'author': 'Maxime MOREILLON',
+    'version': '1.0.1',
+    } )
+
 
 
 @app.route('/predict', methods=['POST'])
@@ -74,7 +79,6 @@ def predict():
 
     return jsonify({
         "count": person_count,
-
     })
 
 if __name__ == '__main__':
