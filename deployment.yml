@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: person-counter
-        image: 192.168.1.2:5000/person-counter
+        image: moreillon/person-counter
         ports:
         - containerPort: 8051
 ---
