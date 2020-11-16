@@ -24,7 +24,7 @@ def download_model():
 def load_model():
     # Model loading
     print('Loading model ...')
-    model = tf.saved_model.load(MODEL_PATH)
+    model = tf.compat.v2.saved_model.load(MODEL_PATH, None)
     model = model.signatures['serving_default']
     print('Loading model OK')
 
